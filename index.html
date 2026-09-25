@@ -1,19 +1,291 @@
-&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt; &lt;meta charset="UTF-8"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; &lt;title&gt;Static Fallback&lt;/title&gt; &lt;style&gt; body { font-family: sans-serif; text-align: center; padding-top: 100px; background-color: #2c3e50; color: #ecf0f1; } .static-card { border: 2px solid #f1c40f; padding: 20px; margin: 15px auto; background-color: #34495e; width: 80%; border-radius: 10px; } h1 { color: #f1c40f; } &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;h1&gt;STATIC FALLBACK: (Data Visible?)&lt;/h1&gt;
-&lt;div class="static-card"&gt;
-    &lt;h3&gt;Starlight Extract (Dose)&lt;/h3&gt;
-    &lt;p&gt;Gateway to hyper-focus. Clears the noise and sharpens the vision.&lt;/p&gt;
-    &lt;p&gt;Price: $30.00&lt;/p&gt;
-&lt;/div&gt;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concrete Fungui | The Path to Insight</title>
 
-&lt;div class="static-card"&gt;
-    &lt;h3&gt;Deep Root Caps&lt;/h3&gt;
-    &lt;p&gt;Ancient wisdom and earth connection. Grounding force against the cosmic drift.&lt;/p&gt;
-    &lt;p&gt;Price: $25.00&lt;/p&gt;
-&lt;/div&gt;
+    <!-- Google Font Import: Montserrat for Modernity, Georgia for Depth -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&amp;amp;amp;amp;amp;family=Georgia&amp;amp;amp;amp;amp;display=swap" rel="stylesheet">
 
-&lt;div class="static-card"&gt;
-    &lt;h3&gt;Cosmic Gummy Burst&lt;/h3&gt;
-    &lt;p&gt;Fast, vibrant, and immediate. A pure burst of color and sound.&lt;/p&gt;
-    &lt;p&gt;Price: $18.00&lt;/p&gt;
-&lt;/div&gt;
-&lt;/body&gt; &lt;/html&gt;
+    <style>
+        /* =================================================== */
+        /* 🌿 CORE DESIGN SYSTEM: MYSTERY, SLEEK, MODERN 🌿 */
+        /* =================================================== */
+        :root {
+            /* Palette: Deep, Earthy, Electric Pop */
+            --color-foundation: #1a1a2e; /* Deep Navy/Black */
+            --color-secondary: #2c2c54; /* Muted Violet - Mystery */
+            --color-accent: #e74c3c; /* Electric Red - Purchase/Urgency */
+            --color-gold: #f1c40f; /* Sunlight/Gold - Wisdom/Focus */
+            --color-light: #ecf0f1; /* Light Gray - Serenity */
+            --color-dark-text: #0a0a1a; /* Near Black */
+            --font-header: 'Montserrat', sans-serif;
+            --font-body: 'Georgia', serif;
+            --transition-speed: 0.3s ease;
+        }
+
+        /* BASE RESET & GLOBAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-foundation);
+            color: var(--color-light);
+            line-height: 1.7;
+            min-height: 100vh;
+            background-image: linear-gradient(160deg, var(--color-foundation) 0%, var(--color-secondary) 50%, #0a0a1a 100%);
+            background-size: 600% 600%;
+            animation: subtlePulse 25s infinite;
+        }
+
+        /* ANIMATION FOR DYNAMIC FEEL */
+        @keyframes subtlePulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- 1. NAVIGATION & HERO SECTION --- */
+        header {
+            background-color: rgba(26, 26, 46, 0.95); /* Semi-transparent foundation */
+            backdrop-filter: blur(10px); /* Modern blur effect */
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 6px solid var(--color-gold);
+            box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4); /* Red shadow for impact */
+        }
+        header h1 {
+            font-family: var(--font-header);
+            font-size: 3.5em;
+            color: var(--color-gold);
+            text-shadow: 0 0 15px var(--color-accent);
+            margin-bottom: 15px;
+        }
+        header p.tagline {
+            font-style: italic;
+            font-size: 1.2em;
+            color: #bdc3c7;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--color-accent);
+            color: var(--color-dark-text);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 900;
+            font-size: 1.1em;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.7);
+        }
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(231, 76, 60, 0.9);
+        }
+
+        /* --- 2. FEATURE/MISSION SECTION (The Why) --- */
+        .mission-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .mission-grid {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        .mission-card {
+            flex: 1 1 300px;
+            background-color: var(--color-secondary);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid var(--color-gold);
+            text-align: left;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        .mission-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(231, 76, 60, 0.5);
+        }
+        .mission-card h3 {
+            font-family: var(--font-header);
+            color: var(--color-gold);
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        /* --- 3. PRODUCT LISTING (The What) --- */
+        .products-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .product-card {
+            background-color: var(--color-secondary);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s;
+            border-top: 5px solid var(--color-accent);
+            text-align: center;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px var(--color-gold);
+        }
+        .product-card h3 {
+            font-family: var(--font-header);
+            color: var(--color-gold);
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+        .price-tag {
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 1.3em;
+            font-weight: 900;
+            color: var(--color-accent);
+        }
+        .price-tag span {
+            font-size: 0.8em;
+            color: #bdc3c7;
+            display: block;
+        }
+
+        /* --- 4. CTA / FOOTER --- */
+        footer {
+            background-color: var(--color-dark-text);
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 5px solid var(--color-gold);
+            box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.5);
+        }
+        footer h2 {
+            font-family: var(--font-header);
+            font-size: 2em;
+            color: var(--color-gold);
+            margin-bottom: 20px;
+        }
+        .social-links a {
+            color: #bdc3c7;
+            font-size: 1.5em;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--color-accent);
+            transform: scale(1.2);
+        }
+
+        /* --- RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5em; }
+            .mission-grid { flex-direction: column; }
+            .mission-card { margin-bottom: 20px; }
+            .products-grid { grid-template-columns: 1fr; }
+            main { padding: 30px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 👑 1. HERO SECTION (THE HOOK) 👑 -->
+    <header>
+        <h1>CONCRETE FUNGUI</h1>
+        <p class="tagline">Where Science Meets Transcendence. Guided Insights from the Underground.</p>
+        <a href="#products" class="cta-button">Explore Our Strains &amp;amp;amp;gt;</a>
+    </header>
+
+    <!-- 🧠 2. MISSION & VALUE PROPOSITION (THE WHY) -->
+    <section class="mission-section">
+        <div class="mission-grid">
+
+            <!-- Card 1: Focus -->
+            <div class="mission-card">
+                <h3>🔬 Guided Exploration</h3>
+                <p>We provide meticulous sourcing and verified potency for every strain. No guesswork, just profound reliability. We bridge the gap between botany and breakthrough.</p>
+            </div>
+
+            <!-- Card 2: Quality -->
+            <div class="mission-card">
+                <h3>✨ Potency Perfected</h3>
+                <p>Our process is designed to maximize the active compounds. From the soil to the shelf, we ensure peak psychoactive integrity for a pure experience.</p>
+            </div>
+
+            <!-- Card 3: Community/Path -->
+            <div class="mission-card">
+                <h3>🧭 The Path Finder</h3>
+                <p>More than just mushrooms—we offer insights. We are curators of experience, guiding you from the mundane to the magnificent.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🌲 3. PRODUCT LISTING (THE WHAT) 🌲 -->
+    <section id="products" class="products-section">
+        <h2>Our Library of Insight</h2>
+        <div class="products-grid">
+
+            <!-- Product 1: The Standard Starter -->
+            <div class="product-card">
+                <h3>Starlight Extract (The Opener)</h3>
+                <p>Our signature strain: reliable, potent, and perfectly balanced for beginners seeking a classic, clear experience.</p>
+                <span class="price-tag">$30.00</span>
+                <small>Ideal for first-time exploration.</small>
+            </div>
+
+            <!-- Product 2: The Deep Diver -->
+            <div class="product-card">
+                <h3>Primal Slicer Harvest (The Architect)</h3>
+                <p>A complex, intense strain designed for deep dives, rewriting familiar realities. For the seasoned explorer seeking transformation.</p>
+                <span class="price-tag">$50.00</span>
+                <small>Advanced &amp;amp;amp;amp;amp;gt; Transformation.</small>
+            </div>
+
+            <!-- Product 3: The Gentle Guide -->
+            <div class="product-card">
+                <h3>Micro-Dose Pack (The Anchor)</h3>
+                <p>Subtle, gentle, and grounding. Perfect for integrating insights into daily life without overwhelming the system.</p>
+                <span class="price-tag">$25.00</span>
+                <small>Integration &amp;amp;amp;amp;amp;gt; Daily Life.</small>
+            </div>
+
+            <!-- Product 4: The Potent Force -->
+            <div class="product-card">
+                <h3>Deep Spectrum Pack (The Zenith)</h3>
+                <p>Maximum dosage for those seeking the absolute peak of experience. A full, immersive journey into the unknown.</p>
+                <span class="price-tag">$60.00</span>
+                <small>Intense &amp;amp;amp;amp;amp;gt; Peak Experience.</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🤝 4. FINAL CALL TO ACTION / FOOTER 🤝 -->
+    <footer>
+        <h2>Ready to Begin Your Path?</h2>
+        <p style="margin-bottom: 25px;">Experience the convergence of nature and insight.</p>
+        <a href="#cart" class="cta-button" style="margin-bottom: 20px;">View All Strains &amp;amp;amp;gt;</a>
+
+        <div class="social-links">
+            <!-- Placeholder Social Icons -->
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="X">🐦</a>
+            <a href="#" aria-label="Discord">💬</a>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.9em;">
+            Ordering via: Signal (Direct Line) | Email (Deep Dive)
+        </p>
+    </footer>
+</body>
+</html>
