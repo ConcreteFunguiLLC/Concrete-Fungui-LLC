@@ -3,164 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CONRETE FUNGUI - Medicinal Psilocybin Dispensary</title>
+    <title>CONRETE FUNGUI // Altered State Dispensary</title>
     <style>
         /* ========================================== */
-        /* STYLES.CSS content starts here */
+        /* PSYCHEDELIC STYLING: FUZZY, FLOWING, VIBRANT */
         /* ========================================== */
+        :root {
+            --color-primary: #ff00ff; /* Magenta/Fuchsia */
+            --color-secondary: #00ffff; /* Cyan/Aqua */
+            --color-accent: #ffcc00; /* Acid Yellow */
+            --color-dark: #1a0033; /* Deep Indigo/Black */
+            --color-light: #ffffff;
+            --font-main: 'Impact', 'Arial Black', Gadget, sans-serif;
+            --font-display: 'Georgia', serif;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-main);
             margin: 0;
             padding: 0;
-            background-color: #f4f7f9;
-            color: #333;
-            line-height: 1.6;
+            background: linear-gradient(135deg, #1a0033 0%, #ff00ff 50%, #00ffff 100%);
+            color: var(--color-light);
+            line-height: 1.7;
+            min-height: 100vh;
+            /* Subtle background animation for a "breathing" effect */
+            background-size: 400% 400%;
+            animation: psychedelicPulse 20s ease-in-out infinite;
+        }
+
+        @keyframes psychedelicPulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header {
-            background-color: #2e7d32; /* Deep Green for natural/medicinal vibe */
-            color: white;
-            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+            color: var(--color-accent);
+            padding: 40px 20px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-bottom: 5px solid var(--color-secondary);
+            box-shadow: 0 0 30px var(--color-primary);
         }
 
         header h1 {
+            font-size: 3.5em;
+            text-shadow: 0 0 10px var(--color-secondary), 0 0 20px var(--color-primary);
             margin: 0;
-            font-size: 2.5em;
+        }
+
+        header p {
+            font-style: italic;
+            color: #fff;
+            text-shadow: 0 0 5px #00ffff;
         }
 
         main {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 20px auto;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            max-width: 1400px;
+            margin: 40px auto;
+            background: rgba(30, 0, 51, 0.85); /* Slightly transparent dark panel */
+            border-radius: 20px;
+            border: 4px solid var(--color-accent);
+            box-shadow: 0 0 50px var(--color-primary);
         }
 
         /* --- Inventory Grid --- */
         #inventory-list h2 {
             text-align: center;
-            color: #2e7d32;
-            margin-bottom: 30px;
+            font-size: 2.5em;
+            color: var(--color-accent);
+            text-shadow: 0 0 10px #ff00ff;
+            margin-bottom: 40px;
+            border-bottom: 3px dashed var(--color-secondary);
+            padding-bottom: 10px;
         }
 
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .product-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
+            border: 3px solid var(--color-secondary);
+            border-radius: 15px;
+            padding: 25px;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             cursor: pointer;
-            background-color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(46, 125, 50, 0.15);
+            transform: scale(1.05) rotate(3deg);
+            box-shadow: 0 0 30px var(--color-primary), 0 0 50px var(--color-accent);
+            border-color: var(--color-primary);
         }
 
         .product-card h3 {
-            color: #004d40;
+            color: var(--color-accent);
+            font-size: 1.6em;
             margin-top: 0;
+            text-shadow: 0 0 5px var(--color-secondary);
         }
 
         .stock-indicator {
             font-weight: bold;
-            padding: 5px;
-            border-radius: 4px;
+            padding: 8px 15px;
+            border-radius: 20px;
             display: inline-block;
-            margin-top: 10px;
+            margin-top: 15px;
+            font-size: 1.1em;
         }
 
         .low-stock {
-            background-color: #ffeb3b;
-            color: #f9a825;
+            background-color: rgba(255, 196, 0, 0.7);
+            color: var(--color-dark);
+            border: 1px solid orange;
         }
 
         .in-stock {
-            background-color: #c8e6c9;
-            color: #388e3c;
+            background-color: rgba(0, 255, 255, 0.6);
+            color: var(--color-dark);
+            border: 1px solid var(--color-secondary);
         }
 
         /* --- Detail View --- */
         #product-details {
-            margin-top: 40px;
-            padding: 30px;
-            border: 2px solid #2e7d32;
-            border-radius: 8px;
+            margin-top: 50px;
+            padding: 40px;
+            border: 5px double var(--color-accent);
+            border-radius: 25px;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 40px var(--color-primary);
         }
 
         #back-to-list {
-            padding: 10px 15px;
-            background-color: #ff9800;
-            color: white;
-            border: none;
-            border-radius: 5px;
+            padding: 12px 20px;
+            background-color: var(--color-secondary);
+            color: var(--color-dark);
+            border: 2px solid var(--color-accent);
+            border-radius: 30px;
             cursor: pointer;
-            margin-bottom: 20px;
-            font-size: 1em;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+            box-shadow: 0 0 10px var(--color-secondary);
+        }
+
+        #back-to-list:hover {
+            background-color: var(--color-accent);
+            transform: scale(1.05);
         }
 
         #details-content p {
-            font-size: 1.1em;
-            margin-bottom: 15px;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid var(--color-primary);
         }
 
         #ordering-form-container {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px dashed #ccc;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: 3px ridge var(--color-secondary);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        #ordering-form-container h3 {
+            color: var(--color-accent);
+            font-size: 1.8em;
+            margin-bottom: 20px;
         }
 
         #ordering-form-container input[type="number"] {
-            padding: 10px;
-            width: 150px;
-            margin-right: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            padding: 12px;
+            width: 180px;
+            margin-right: 15px;
+            border: 3px solid var(--color-primary);
+            border-radius: 10px;
+            font-size: 1.1em;
+            background: var(--color-light);
+            color: var(--color-dark);
+            text-align: center;
+            box-shadow: 0 0 8px var(--color-secondary);
         }
 
         #order-button {
-            padding: 10px 20px;
-            background-color: #4caf50;
-            color: white;
+            padding: 12px 25px;
+            background-color: var(--color-accent);
+            color: var(--color-dark);
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(255, 204, 0, 0.7);
         }
 
         #order-button:hover {
-            background-color: #388e3c;
+            background-color: #ffeb3b;
+            transform: translateY(-3px) scale(1.02);
         }
 
         .message {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 4px;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
             font-weight: bold;
+            text-align: center;
+            font-size: 1.2em;
         }
 
-        .success { background-color: #e8f5e9; color: #2e7d32; }
-        .error { background-color: #ffebee; color: #c62828; }
+        .success { background-color: rgba(144, 238, 144, 0.7); color: var(--color-dark); border: 2px solid #3cb371; }
+        .error { background-color: rgba(255, 105, 180, 0.7); color: #8b0000; border: 2px solid #ff69b4; }
 
-
-        /* --- Footer --- */
         footer {
             text-align: center;
-            padding: 20px;
-            background-color: #333;
-            color: #ccc;
-            margin-top: 30px;
-            font-size: 0.9em;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            color: var(--color-light);
+            margin-top: 50px;
+            font-size: 1.1em;
+            border-top: 5px dotted var(--color-accent);
         }
 
         .hidden {
@@ -172,52 +242,55 @@
 
     <header>
         <h1>CONRETE FUNGUI</h1>
-        <p>Premium Medicinal Psilocybin Products</p>
+        <p>Where the Fungi meet the Frequencies. Medicinal Psilocybin Apothecary.</p>
     </header>
 
     <main>
+        <!-- INVENTORY LIST VIEW -->
         <section id="inventory-list">
-            <h2>In Stock Items</h2>
+            <h2 id="inventory-header">Available Journeys</h2>
             <div id="products-container" class="product-grid">
-                <!-- Products will be inserted here by JavaScript -->
+                <!-- Products load here -->
             </div>
         </section>
 
+        <!-- PRODUCT DETAIL VIEW -->
         <section id="product-details" class="hidden">
-            <button id="back-to-list">← Back to Inventory</button>
+            <button id="back-to-list">← Re-enter the Portal</button>
             <h2 id="detail-name"></h2>
             <div id="details-content">
-                <!-- Dynamic details (stock, ordering info) will go here -->
+                <!-- Dynamic details load here -->
             </div>
             <div id="ordering-form-container">
-                <h3>Place Your Order</h3>
-                <label for="quantity">Quantity (Dose/Gram):</label>
+                <h3>Initiate Ritual</h3>
+                <label for="quantity" style="display: block; margin-bottom: 5px;">Dose / Quantity to Experience:</label>
                 <input type="number" id="quantity" min="1" value="1">
-                <button id="order-button">Order Now</button>
+                <button id="order-button">Activate Order</button>
                 <p id="order-message" class="message"></p>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 CONRETE FUNGUI. Certified Medicinal Provider.</p>
-        <p>Ordering Instructions: Contact us via WhatsApp/Email for guaranteed delivery.</p>
+        <p>&copy; 2024 CONRETE FUNGUI // Consciousness Cultivator.</p>
+        <p>Order Guidance: Consult the 'Dosing Advice' on the product page, then contact us directly via WhatsApp/Email to finalize the journey.</p>
     </footer>
 
     <script>
         // ==========================================
-        // SCRIPT.JS content starts here
+        // JAVASCRIPT LOGIC (The Brain)
         // ==========================================
 
         // --- DATA MODEL (Simulated Database) ---
+        // Adjusted prices/descriptions to fit the trippy vibe
         const inventory = [
-            { id: 1, name: "Lion's Mane Extract", stock: 45, price: "$30/dose", description: "Cognitive enhancer. Excellent for focus and memory. High potency.", order_advice: "Recommended starting dose: 1-2 grams.", low_stock_threshold: 15 },
-            { id: 2, name: "Blue Reishi Caps", stock: 12, price: "$25/dose", description: "Immune support and stress relief. Great for daily maintenance.", order_advice: "Best used consistently over 4-6 weeks for maximum effect.", low_stock_threshold: 10 },
-            { id: 3, name: "Psilocybe Cubensis Gummy", stock: 88, price: "$18/pack", description: "Fast-acting, enjoyable experience. Perfect for beginners.", order_advice: "Start with 2-3 gummies to gauge tolerance.", low_stock_threshold: 20 },
-            { id: 4, name: "Golden Teacher Slices", stock: 5, price: "$50/gram", description: "Intense, visionary experience. For experienced users seeking deep insight.", order_advice: "Requires controlled setting and water. Start small (0.5g) to assess intensity.", low_stock_threshold: 8 }
+            { id: 1, name: "Starlight Cap Extract", stock: 45, price: "$30/dose", description: "Gateway to hyper-focus. Clears the noise and sharpens the vision.", order_advice: "Begin with 1g; look for the iridescent edge of thought.", low_stock_threshold: 15 },
+            { id: 2, name: "Deep Root Caps", stock: 12, price: "$25/dose", description: "Ancient wisdom and earth connection. Grounding force against the cosmic drift.", order_advice: "Use daily for weeks to root out anxieties. Consistency is key.", low_stock_threshold: 10 },
+            { id: 3, name: "Cosmic Gummy Burst", stock: 88, price: "$18/pack", description: "Fast, vibrant, and immediate. A pure burst of color and sound.", order_advice: "Start small (2-3 gummies) to calibrate your system.", low_stock_threshold: 20 },
+            { id: 4, name: "Primal Slicer Harvest", stock: 5, price: "$50/gram", description: "Deep dive. Visions that rewrite the physics of reality. For the seasoned explorer.", order_advice: "Requires a prepared canvas (meditation/music) and slow absorption. Start at 0.5g.", low_stock_threshold: 8 }
         ];
 
-        // --- DOM Elements ---
+        // --- DOM Elements Cache ---
         const productGrid = document.getElementById('products-container');
         const inventoryListSection = document.getElementById('inventory-list');
         const productDetailsSection = document.getElementById('product-details');
@@ -231,122 +304,113 @@
 
         let selectedProduct = null;
 
-        // --- FUNCTIONS ---
+        // --- Core Functions ---
 
-        // Renders all products in the main grid view
         function renderInventory() {
             productGrid.innerHTML = '';
             inventory.forEach(product => {
                 const isLow = product.stock <= product.low_stock_threshold;
                 const stockClass = isLow ? 'low-stock' : 'in-stock';
-                const stockText = product.stock > 0 ? `In Stock: ${product.stock}` : 'OUT OF STOCK';
+                const stockText = product.stock > 0 ? `Flowing: ${product.stock}` : 'OUT OF SYNC';
 
                 const card = document.createElement('div');
                 card.classList.add('product-card');
                 card.innerHTML = `
                     <h3>${product.name}</h3>
-                    <p>${product.description.substring(0, 60)}...</p>
+                    <p>${product.description.substring(0, 70)}...</p>
                     <span class="stock-indicator ${stockClass}">${stockText}</span>
-                    <p><strong>Price: ${product.price}</strong></p>
+                    <p style="margin-top: 15px;"><strong style="color: var(--color-primary);">Manifestation Value: ${product.price}</strong></p>
                 `;
                 card.addEventListener('click', () => viewProductDetails(product));
                 productGrid.appendChild(card);
             });
         }
 
-        // Displays detailed information for a selected product
         function viewProductDetails(product) {
             selectedProduct = product;
 
-            // Hide inventory, show details
+            // State Change: Inventory -> Detail View
             inventoryListSection.classList.add('hidden');
             productDetailsSection.classList.remove('hidden');
 
-            // Update detail content
+            // Populate Details
             detailName.textContent = product.name;
 
             let htmlContent = `
-                <p><strong>Stock Available:</strong> ${product.stock} units</p>
-                <p><strong>Description:</strong> ${product.description}</p>
-                <p><strong>Dosing Advice:</strong> ${product.order_advice}</p>
-                <hr>
-                <p><strong>Total Price Estimate (Base):</strong> ${product.price}</p>
+                <p><strong>STOCK LEVEL:</strong> ${product.stock} available realities.</p>
+                <p><strong>MANIFESTO:</strong> ${product.description}</p>
+                <p><strong>GUIDANCE:</strong> ${product.order_advice}</p>
+                <hr style="border-color: var(--color-accent);">
+                <p><strong>CURRENT FREQUENCY VALUE:</strong> ${product.price}</p>
             `;
             detailsContent.innerHTML = htmlContent;
 
-            // Update form messages
+            // Form Setup
             orderMessage.textContent = '';
             orderMessage.className = 'message';
-
-            // Set quantity limits
             quantityInput.max = product.stock;
             quantityInput.value = Math.min(1, product.stock);
 
             document.getElementById('ordering-form-container').style.display = 'block';
         }
 
-        // Handles the order submission process
         function handleOrder() {
             if (!selectedProduct) return;
 
             const quantity = parseInt(quantityInput.value);
 
             if (isNaN(quantity) || quantity <= 0) {
-                displayOrderMessage("Please enter a valid quantity.", 'error');
+                displayOrderMessage("Input a number beyond zero to enter the matrix.", 'error');
                 return;
             }
             if (quantity > selectedProduct.stock) {
-                displayOrderMessage(`Cannot order ${quantity}. Only ${selectedProduct.stock} units are available.`, 'error');
+                displayOrderMessage(`Error! You've reached the limit. Only ${selectedProduct.stock} units remain in this cycle.`, 'error');
                 return;
             }
 
-            // --- Order Processing Logic ---
-            // Note: I am assuming the price listed in the inventory object is the base unit price.
-            // For simplicity, we estimate the total.
-            let totalCostString = "TBD";
-            if (selectedProduct.price.includes('/dose') || selectedProduct.price.includes('/gram')) {
-                 // Simple way to pull a number out of the price string for calculation
-                 const match = selectedProduct.price.match(/[\d.]+/);
-                 const basePrice = match ? parseFloat(match[0].replace('$', '')) : 0;
-                 const total = (quantity * basePrice).toFixed(2);
-                 totalCostString = `$${total}`;
+            // Estimate Total based on the string data
+            let totalCostString = selectedProduct.price; 
+            if (selectedProduct.price.includes('$')) {
+                // Simple extraction logic for calculation if needed, otherwise just state the base price
+                const match = selectedProduct.price.match(/[\d.]+/);
+                const basePrice = match ? parseFloat(match[0].replace('$', '')) : 0;
+                const total = (quantity * basePrice).toFixed(2);
+                totalCostString = `$${total}`;
             }
 
-            // This simulates sending the order data to your backend/contact method
-            const orderConfirmationText = `Order placed successfully for ${quantity} unit(s) of ${selectedProduct.name}. Estimated total: ${totalCostString}. Please contact us via our provided channels (WhatsApp/Email) to confirm pricing and arrange delivery.`;
+            // Confirmation Output (This is what you communicate to the customer)
+            const orderConfirmationText = `Order acknowledged! You request ${quantity} unit(s) of ${selectedProduct.name}. Total Projection: ${totalCostString}. Reply to confirm reality synchronization (WhatsApp/Email).`;
 
             displayOrderMessage(orderConfirmationText, 'success');
 
-            // Optional: Deduct stock from the inventory array immediately
+            // Update Stock
             selectedProduct.stock -= quantity;
-
-            // Re-render the main list to show updated stock
-            renderInventory();
+            renderInventory(); // Refresh the main view to show the new stock
         }
 
-        // Displays feedback messages on the ordering section
         function displayOrderMessage(message, type) {
             orderMessage.textContent = message;
             orderMessage.className = `message ${type}`;
         }
 
 
-        // --- EVENT LISTENERS &amp; INITIALIZATION ---
+        // --- Event Listeners & Initialization ---
 
         backToListButton.addEventListener('click', () => {
             productDetailsSection.classList.add('hidden');
             inventoryListSection.classList.remove('hidden');
             selectedProduct = null;
-            // Ensure the product grid is up-to-date if stock was changed
+            // Re-render ensures the stock count is updated visually upon return
             renderInventory(); 
         });
 
         orderButton.addEventListener('click', handleOrder);
 
-        // Initialize the website
+        // Initialize the website when the DOM is fully loaded
         document.addEventListener('DOMContentLoaded', () => {
             renderInventory();
         });
     </script>
+
 </body>
 </html>
