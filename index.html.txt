@@ -4,9 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CONRETE FUNGUI - Medicinal Psilocybin Dispensary</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ========================================== */
+        /* STYLES.CSS content starts here */
+        /* ========================================== */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #2e7d32; /* Deep Green for natural/medicinal vibe */
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        main {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- Inventory Grid --- */
+        #inventory-list h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 30px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            background-color: #ffffff;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(46, 125, 50, 0.15);
+        }
+
+        .product-card h3 {
+            color: #004d40;
+            margin-top: 0;
+        }
+
+        .stock-indicator {
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .low-stock {
+            background-color: #ffeb3b;
+            color: #f9a825;
+        }
+
+        .in-stock {
+            background-color: #c8e6c9;
+            color: #388e3c;
+        }
+
+        /* --- Detail View --- */
+        #product-details {
+            margin-top: 40px;
+            padding: 30px;
+            border: 2px solid #2e7d32;
+            border-radius: 8px;
+        }
+
+        #back-to-list {
+            padding: 10px 15px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            font-size: 1em;
+        }
+
+        #details-content p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        #ordering-form-container {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
+        }
+
+        #ordering-form-container input[type="number"] {
+            padding: 10px;
+            width: 150px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #order-button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #order-button:hover {
+            background-color: #388e3c;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .success { background-color: #e8f5e9; color: #2e7d32; }
+        .error { background-color: #ffebee; color: #c62828; }
+
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #ccc;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
+
     <header>
         <h1>CONRETE FUNGUI</h1>
         <p>Premium Medicinal Psilocybin Products</p>
@@ -41,6 +204,149 @@
         <p>Ordering Instructions: Contact us via WhatsApp/Email for guaranteed delivery.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // ==========================================
+        // SCRIPT.JS content starts here
+        // ==========================================
+
+        // --- DATA MODEL (Simulated Database) ---
+        const inventory = [
+            { id: 1, name: "Lion's Mane Extract", stock: 45, price: "$30/dose", description: "Cognitive enhancer. Excellent for focus and memory. High potency.", order_advice: "Recommended starting dose: 1-2 grams.", low_stock_threshold: 15 },
+            { id: 2, name: "Blue Reishi Caps", stock: 12, price: "$25/dose", description: "Immune support and stress relief. Great for daily maintenance.", order_advice: "Best used consistently over 4-6 weeks for maximum effect.", low_stock_threshold: 10 },
+            { id: 3, name: "Psilocybe Cubensis Gummy", stock: 88, price: "$18/pack", description: "Fast-acting, enjoyable experience. Perfect for beginners.", order_advice: "Start with 2-3 gummies to gauge tolerance.", low_stock_threshold: 20 },
+            { id: 4, name: "Golden Teacher Slices", stock: 5, price: "$50/gram", description: "Intense, visionary experience. For experienced users seeking deep insight.", order_advice: "Requires controlled setting and water. Start small (0.5g) to assess intensity.", low_stock_threshold: 8 }
+        ];
+
+        // --- DOM Elements ---
+        const productGrid = document.getElementById('products-container');
+        const inventoryListSection = document.getElementById('inventory-list');
+        const productDetailsSection = document.getElementById('product-details');
+        const detailName = document.getElementById('detail-name');
+        const detailsContent = document.getElementById('details-content');
+        const orderingFormContainer = document.getElementById('ordering-form-container');
+        const backToListButton = document.getElementById('back-to-list');
+        const quantityInput = document.getElementById('quantity');
+        const orderButton = document.getElementById('order-button');
+        const orderMessage = document.getElementById('order-message');
+
+        let selectedProduct = null;
+
+        // --- FUNCTIONS ---
+
+        // Renders all products in the main grid view
+        function renderInventory() {
+            productGrid.innerHTML = '';
+            inventory.forEach(product => {
+                const isLow = product.stock <= product.low_stock_threshold;
+                const stockClass = isLow ? 'low-stock' : 'in-stock';
+                const stockText = product.stock > 0 ? `In Stock: ${product.stock}` : 'OUT OF STOCK';
+
+                const card = document.createElement('div');
+                card.classList.add('product-card');
+                card.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <p>${product.description.substring(0, 60)}...</p>
+                    <span class="stock-indicator ${stockClass}">${stockText}</span>
+                    <p><strong>Price: ${product.price}</strong></p>
+                `;
+                card.addEventListener('click', () => viewProductDetails(product));
+                productGrid.appendChild(card);
+            });
+        }
+
+        // Displays detailed information for a selected product
+        function viewProductDetails(product) {
+            selectedProduct = product;
+
+            // Hide inventory, show details
+            inventoryListSection.classList.add('hidden');
+            productDetailsSection.classList.remove('hidden');
+
+            // Update detail content
+            detailName.textContent = product.name;
+
+            let htmlContent = `
+                <p><strong>Stock Available:</strong> ${product.stock} units</p>
+                <p><strong>Description:</strong> ${product.description}</p>
+                <p><strong>Dosing Advice:</strong> ${product.order_advice}</p>
+                <hr>
+                <p><strong>Total Price Estimate (Base):</strong> ${product.price}</p>
+            `;
+            detailsContent.innerHTML = htmlContent;
+
+            // Update form messages
+            orderMessage.textContent = '';
+            orderMessage.className = 'message';
+
+            // Set quantity limits
+            quantityInput.max = product.stock;
+            quantityInput.value = Math.min(1, product.stock);
+
+            document.getElementById('ordering-form-container').style.display = 'block';
+        }
+
+        // Handles the order submission process
+        function handleOrder() {
+            if (!selectedProduct) return;
+
+            const quantity = parseInt(quantityInput.value);
+
+            if (isNaN(quantity) || quantity <= 0) {
+                displayOrderMessage("Please enter a valid quantity.", 'error');
+                return;
+            }
+            if (quantity > selectedProduct.stock) {
+                displayOrderMessage(`Cannot order ${quantity}. Only ${selectedProduct.stock} units are available.`, 'error');
+                return;
+            }
+
+            // --- Order Processing Logic ---
+            // Note: I am assuming the price listed in the inventory object is the base unit price.
+            // For simplicity, we estimate the total.
+            let totalCostString = "TBD";
+            if (selectedProduct.price.includes('/dose') || selectedProduct.price.includes('/gram')) {
+                 // Simple way to pull a number out of the price string for calculation
+                 const match = selectedProduct.price.match(/[\d.]+/);
+                 const basePrice = match ? parseFloat(match[0].replace('$', '')) : 0;
+                 const total = (quantity * basePrice).toFixed(2);
+                 totalCostString = `$${total}`;
+            }
+
+            // This simulates sending the order data to your backend/contact method
+            const orderConfirmationText = `Order placed successfully for ${quantity} unit(s) of ${selectedProduct.name}. Estimated total: ${totalCostString}. Please contact us via our provided channels (WhatsApp/Email) to confirm pricing and arrange delivery.`;
+
+            displayOrderMessage(orderConfirmationText, 'success');
+
+            // Optional: Deduct stock from the inventory array immediately
+            selectedProduct.stock -= quantity;
+
+            // Re-render the main list to show updated stock
+            renderInventory();
+        }
+
+        // Displays feedback messages on the ordering section
+        function displayOrderMessage(message, type) {
+            orderMessage.textContent = message;
+            orderMessage.className = `message ${type}`;
+        }
+
+
+        // --- EVENT LISTENERS &amp; INITIALIZATION ---
+
+        backToListButton.addEventListener('click', () => {
+            productDetailsSection.classList.add('hidden');
+            inventoryListSection.classList.remove('hidden');
+            selectedProduct = null;
+            // Ensure the product grid is up-to-date if stock was changed
+            renderInventory(); 
+        });
+
+        orderButton.addEventListener('click', handleOrder);
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', () => {
+            renderInventory();
+        });
+    </script>
 </body>
 </html>
