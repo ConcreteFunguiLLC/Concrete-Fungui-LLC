@@ -1,0 +1,129 @@
+// --- DATA MODEL (Simulated Database) ---
+const inventory = [
+    { id: 1, name: "Lion's Mane Extract", stock: 45, price: "$30/dose", description: "Cognitive enhancer. Excellent for focus and memory. High potency.", order_advice: "Recommended starting dose: 1-2 grams.", low_stock_threshold: 15 },
+    { id: 2, name: "Blue Reishi Caps", stock: 12, price: "$25/dose", description: "Immune support and stress relief. Great for daily maintenance.", order_advice: "Best used consistently over 4-6 weeks for maximum effect.", low_stock_threshold: 10 },
+    { id: 3, name: "Psilocybe Cubensis Gummy", stock: 88, price: "$18/pack", description: "Fast-acting, enjoyable experience. Perfect for beginners.", order_advice: "Start with 2-3 gummies to gauge tolerance.", low_stock_threshold: 20 },
+    { id: 4, name: "Golden Teacher Slices", stock: 5, price: "$50/gram", description: "Intense, visionary experience. For experienced users seeking deep insight.", order_advice: "Requires controlled setting and water. Start small (0.5g) to assess intensity.", low_stock_threshold: 8 }
+];
+
+// --- DOM Elements ---
+const productGrid = document.getElementById('products-container');
+const inventoryListSection = document.getElementById('inventory-list');
+const productDetailsSection = document.getElementById('product-details');
+const detailName = document.getElementById('detail-name');
+const detailsContent = document.getElementById('details-content');
+const orderingFormContainer = document.getElementById('ordering-form-container');
+const backToListButton = document.getElementById('back-to-list');
+const quantityInput = document.getElementById('quantity');
+const orderButton = document.getElementById('order-button');
+const orderMessage = document.getElementById('order-message');
+
+let selectedProduct = null;
+
+// --- FUNCTIONS ---
+
+// Renders all products in the main grid view
+function renderInventory() {
+    productGrid.innerHTML = '';
+    inventory.forEach(product => {
+        const isLow = product.stock <= product.low_stock_threshold;
+        const stockClass = isLow ? 'low-stock' : 'in-stock';
+        const stockText = product.stock > 0 ? `In Stock: ${product.stock}` : 'OUT OF STOCK';
+
+        const card = document.createElement('div');
+        card.classList.add('product-card');
+        card.innerHTML = `
+            <h3>${product.name}</h3>
+            <p>${product.description.substring(0, 60)}...</p>
+            <span class="stock-indicator ${stockClass}">${stockText}</span>
+            <p><strong>Price: ${product.price}</strong></p>
+        `;
+        card.addEventListener('click', () => viewProductDetails(product));
+        productGrid.appendChild(card);
+    });
+}
+
+// Displays detailed information for a selected product
+function viewProductDetails(product) {
+    selectedProduct = product;
+
+    // Hide inventory, show details
+    inventoryListSection.classList.add('hidden');
+    productDetailsSection.classList.remove('hidden');
+
+    // Update detail content
+    detailName.textContent = product.name;
+
+    let htmlContent = `
+        <p><strong>Stock Available:</strong> ${product.stock} units</p>
+        <p><strong>Description:</strong> ${product.description}</p>
+        <p><strong>Dosing Advice:</strong> ${product.order_advice}</p>
+        <hr>
+        <p><strong>Total Price Estimate (Base):</strong> ${product.price}</p>
+    `;
+    detailsContent.innerHTML = htmlContent;
+
+    // Update form messages
+    orderMessage.textContent = '';
+    orderMessage.className = 'message';
+
+    // Set quantity limits
+    quantityInput.max = product.stock;
+    quantityInput.value = Math.min(1, product.stock);
+
+    document.getElementById('ordering-form-container').style.display = 'block';
+}
+
+// Handles the order submission process
+function handleOrder() {
+    if (!selectedProduct) return;
+
+    const quantity = parseInt(quantityInput.value);
+
+    if (isNaN(quantity) || quantity <= 0) {
+        displayOrderMessage("Please enter a valid quantity.", 'error');
+        return;
+    }
+    if (quantity > selectedProduct.stock) {
+        displayOrderMessage(`Cannot order ${quantity}. Only ${selectedProduct.stock} units are available.`, 'error');
+        return;
+    }
+
+    // --- Order Processing Logic ---
+    const totalCost = (quantity * 1) * 1.10; // Simplified pricing model (assuming base price is $/dose)
+
+    // This simulates sending the order data to your backend/contact method
+    const orderConfirmationText = `Order placed successfully for ${quantity} unit(s) of ${selectedProduct.name}. Estimated total: ${totalCost.toFixed(2)}. Please contact us via our provided channels to complete payment and arrange pickup/delivery.`;
+
+    displayOrderMessage(orderConfirmationText, 'success');
+
+    // Optional: Deduct stock from the inventory array immediately
+    selectedProduct.stock -= quantity;
+
+    // Re-render the main list to show updated stock
+    renderInventory();
+}
+
+// Displays feedback messages on the ordering section
+function displayOrderMessage(message, type) {
+    orderMessage.textContent = message;
+    orderMessage.className = `message ${type}`;
+}
+
+
+// --- EVENT LISTENERS & INITIALIZATION ---
+
+backToListButton.addEventListener('click', () => {
+    productDetailsSection.classList.add('hidden');
+    inventoryListSection.classList.remove('hidden');
+    selectedProduct = null;
+    // Ensure the product grid is up-to-date if stock was changed
+    renderInventory(); 
+});
+
+orderButton.addEventListener('click', handleOrder);
+
+// Initialize the website
+document.addEventListener('DOMContentLoaded', () => {
+    renderInventory();
+});

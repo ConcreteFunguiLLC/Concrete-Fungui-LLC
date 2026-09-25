@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONRETE FUNGUI - Medicinal Psilocybin Dispensary</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>CONRETE FUNGUI</h1>
+        <p>Premium Medicinal Psilocybin Products</p>
+    </header>
+
+    <main>
+        <section id="inventory-list">
+            <h2>In Stock Items</h2>
+            <div id="products-container" class="product-grid">
+                <!-- Products will be inserted here by JavaScript -->
+            </div>
+        </section>
+
+        <section id="product-details" class="hidden">
+            <button id="back-to-list">← Back to Inventory</button>
+            <h2 id="detail-name"></h2>
+            <div id="details-content">
+                <!-- Dynamic details (stock, ordering info) will go here -->
+            </div>
+            <div id="ordering-form-container">
+                <h3>Place Your Order</h3>
+                <label for="quantity">Quantity (Dose/Gram):</label>
+                <input type="number" id="quantity" min="1" value="1">
+                <button id="order-button">Order Now</button>
+                <p id="order-message" class="message"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 CONRETE FUNGUI. Certified Medicinal Provider.</p>
+        <p>Ordering Instructions: Contact us via WhatsApp/Email for guaranteed delivery.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
