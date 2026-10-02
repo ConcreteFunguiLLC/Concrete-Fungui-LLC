@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order Received — Concrete Fungii</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .success-container {
+      max-width: 600px;
+      margin: 80px auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .success-icon {
+      font-size: 60px;
+      color: var(--lime);
+      margin-bottom: 20px;
+    }
+    .success-container h1 {
+      font-size: clamp(32px, 5vw, 48px);
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+    }
+    .success-container p {
+      color: var(--muted);
+      margin-bottom: 30px;
+      font-size: 16px;
+    }
+    .next-steps {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 25px;
+      text-align: left;
+      margin-bottom: 30px;
+    }
+    .step-item {
+      margin-bottom: 25px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 20px;
+    }
+    .step-item:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .step-number {
+      display: inline-block;
+      background: var(--cyan);
+      color: #000;
+      font-weight: 900;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 24px;
+      font-size: 12px;
+      margin-right: 10px;
+    }
+    .step-title {
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .step-desc {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 8px;
+      margin-left: 34px;
+    }
+    .return-btn {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="announcement">PREMIUM MUSHROOMS • NATURAL VIBES • HIGHER MINDS</div>
+
+  <main class="success-container">
+    <div class="success-icon">✓</div>
+    <h1>Order Received</h1>
+    <p>Thank you for your order! We have successfully received your details.</p>
+
+    <div class="next-steps">
+      <h3 class="payment-title" style="text-align: left; margin-bottom: 20px;">Next Steps</h3>
+      
+      <div class="step-item">
+        <span class="step-number">1</span>
+        <span class="step-title">Complete Your Payment</span>
+        <div class="step-desc">
+          <p style="margin-bottom: 15px;">Send the exact total to one of the addresses below:</p>
+          
+          <div class="crypto-addresses" style="margin-top: 10px;">
+            <p class="crypto-label">Bitcoin (BTC)</p>
+            <div class="address-box">
+              <code>3HSVQqHzkTV2SXnzipQm1EjvN8aKMvkYP4</code>
+              <button class="copy-btn" onclick="copyToClipboard('3HSVQqHzkTV2SXnzipQm1EjvN8aKMvkYP4')">Copy</button>
+            </div>
+            
+            <p class="crypto-label">Monero (XMR)</p>
+            <div class="address-box">
+              <code>86dCVcNpyUDNjh9joe6smGfLH9v5LqxgHK5VdLZf5Nzf6kFen12KHEfiQteNQHodk7TXZPBq3k6SyMj7QhGysXgrVJ3fzJR</code>
+              <button class="copy-btn" onclick="copyToClipboard('86dCVcNpyUDNjh9joe6smGfLH9v5LqxgHK5VdLZf5Nzf6kFen12KHEfiQteNQHodk7TXZPBq3k6SyMj7QhGysXgrVJ3fzJR')">Copy</button>
+            </div>
+
+            <p class="crypto-label">Ethereum (ETH)</p>
+            <div class="address-box">
+              <code>0xeB7FA57385C40e702979bC58Cfc26612905C8676</code>
+              <button class="copy-btn" onclick="copyToClipboard('0xeB7FA57385C40e702979bC58Cfc26612905C8676')">Copy</button>
+            </div>
+          </div>
+          
+          <div class="qr-payment-section" style="margin-top: 20px; text-align: center;">
+            <p class="payment-subtitle">Or scan to pay with Zelle</p>
+            <div class="qr-wrapper" style="display: inline-block; background: #fff; padding: 10px; border-radius: 8px;">
+              <img src="assets/ppqr.png" alt="Scan to pay with Zelle" class="payment-qr" style="width: 160px; height: 160px; display: block;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <span class="step-number">2</span>
+        <span class="step-title">Send Us Your Receipt</span>
+        <div class="step-desc">
+          After sending the payment, please email a screenshot or transaction ID to <strong>ConcreteFunguiLLC@gmail.com</strong> so we can match your payment to your order.
+        </div>
+      </div>
+
+      <div class="step-item">
+        <span class="step-number">3</span>
+        <span class="step-title">Wait for Confirmation</span>
+        <div class="step-desc">
+          Once your payment is verified, we will send you a final email confirming that your order is being processed and shipped.
+        </div>
+      </div>
+    </div>
+
+    <a href="index.html" class="btn btn-primary return-btn">Return to Shop</a>
+  </main>
+
+  <script>
+    // Copy to Clipboard function
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(function() {
+        const btn = event.target;
+        const originalText = btn.innerText;
+        btn.innerText = "Copied!";
+        btn.style.background = "var(--lime)";
+        btn.style.color = "#000";
+        
+        setTimeout(() => {
+          btn.innerText = originalText;
+          btn.style.background = "var(--line)";
+          btn.style.color = "#fff";
+        }, 2000);
+      }, function(err) {
+        console.error('Could not copy text: ', err);
+        alert("Failed to copy. Please select the address manually.");
+      });
+    }
+  </script>
+</body>
+</html>
