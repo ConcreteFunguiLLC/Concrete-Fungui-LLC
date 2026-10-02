@@ -78,3 +78,27 @@ footer{border-top:1px solid var(--line);padding:60px 5vw;display:grid;grid-templ
   background: var(--cyan);
   color: #000;
 }
+
+/* Header Left Section (Logo + Instagram) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Adjusts space between logo and Instagram icon */
+}
+
+.instagram-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text); /* Default color */
+  transition: color 0.2s ease;
+}
+
+.instagram-link:hover {
+  color: var(--cyan); /* Changes to cyan on hover */
+}
+
+.instagram-link svg {
+  width: 24px;
+  height: 24px;
+}
