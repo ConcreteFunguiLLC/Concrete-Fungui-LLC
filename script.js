@@ -46,44 +46,41 @@ function copyToClipboard(text) {
     console.error('Could not copy text: ', err);
   });
 }
-// Handle Order Form Submission to Formspree
+// Handle Order Form Submission to Web3Forms
 document.getElementById("orderForm").addEventListener("submit", function(e) {
-  e.preventDefault(); // Stop the page from reloading
+  e.preventDefault();
 
   const email = document.getElementById("customerEmail").value;
   const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
 
-  // Prevent checkout if cart is empty
   if (cartTotal === 0) {
     alert("Your cart is empty!");
     return;
   }
 
-  // Prepare the order data for Formspree
   const orderData = {
+    access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Replace with your actual key
     email: email,
     total: cartTotal.toFixed(2),
     items: cart.map(item => `${item.name} (x${item.qty})`).join(", "),
-    orderDate: new Date().toLocaleString()
+    orderDate: new Date().toLocaleString(),
+    subject: "New Concrete Fungii Order",
+    from_name: "Concrete Fungii"
   };
 
-  // Send data to Formspree
-  fetch("https://formspree.io/f/xrpbvnal", {
+  fetch("https://api.web3forms.com/submit", {
     method: "POST",
-    headers: { 
+    headers: {
       "Content-Type": "application/json",
       "Accept": "application/json"
     },
     body: JSON.stringify(orderData)
   })
-  .then(response => {
-    if (response.ok) {
-      // 1. Hide the email form
-      document.getElementById("checkoutFormSection").style.display = "none";
-      // 2. Show the crypto payment addresses
-      document.getElementById("paymentSection").style.display = "block";
-      // 3. Notify the user
-      alert("Order details saved! Please complete the payment below.");
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Redirect to your success page
+      window.location.href = "success.html";
     } else {
       alert("Something went wrong. Please try again.");
     }
