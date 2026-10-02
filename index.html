@@ -4,19 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Concrete Fungii — Premium Mushrooms • Natural Vibes • Higher Minds</title>
-  <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Concrete Fungii — Premium Mushrooms • Natural Vibes • Higher Minds</title>
   <meta name="description" content="Concrete Fungii — premium mushroom products with bold natural energy.">
-  <link rel="stylesheet" href="styles.css">   <!-- THIS LINE MUST BE HERE -->
+  
+  <!-- Favicon & Apple Touch Icon (Uses the logo in your assets folder) -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="apple-touch-icon" href="assets/logo.png">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="announcement">PREMIUM MUSHROOMS • NATURAL VIBES • HIGHER MINDS</div>
 
-        <header class="site-header">
+  <header class="site-header">
     <div class="header-left">
       <a class="brand" href="#top" aria-label="Concrete Fungii home">
+        <img src="assets/logo.png" alt="Concrete Fungii logo">
       </a>
       <!-- Instagram Link -->
       <a class="instagram-link" href="https://instagram.com/ConcreteFungiiLLC" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
@@ -38,6 +41,7 @@
       <button class="cart-button" id="cartBtn">Cart <span id="cartCount">0</span></button>
     </nav>
   </header>
+
   <main id="top">
     <section class="hero">
       <div class="hero-glow"></div>
@@ -50,6 +54,8 @@
           <a class="btn btn-ghost" href="#about">Our story</a>
         </div>
       </div>
+      <!-- The big hero logo has been intentionally removed -->
+    </section>
 
     <section class="ticker">
       <div>QUALITY FIRST</div><div>SMALL-BATCH</div><div>TRANSPARENT</div><div>GOOD VIBES</div><div>QUALITY FIRST</div>
@@ -129,12 +135,12 @@
   </main>
 
   <footer>
-    <div class="footer-brand"><img src="logo.png" alt="Concrete Fungii"><p>Premium mushrooms • Natural vibes • Higher minds.</p></div>
+    <div class="footer-brand"><img src="assets/logo.png" alt="Concrete Fungii"><p>Premium mushrooms • Natural vibes • Higher minds.</p></div>
     <div class="footer-links"><a href="#shop">Shop</a><a href="#about">About</a><a href="#faq">FAQ</a><a href="#contact">Contact</a></div>
     <div class="legal">© 2026 Concrete Fungii. All rights reserved. <br>Demo storefront — replace with your final legal, privacy, shipping, refund, and compliance pages before launch.</div>
   </footer>
 
-      <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
     <div class="cart-head"><h2>Your cart</h2><button id="closeCart">×</button></div>
     <div id="cartItems"></div>
     <div class="cart-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
@@ -153,7 +159,6 @@
     <div class="payment-section" id="paymentSection" style="display: none;">
       <h3 class="payment-title">Pay With Crypto</h3>
       
-      <!-- Crypto Addresses -->
       <div class="crypto-addresses">
         <p class="crypto-label">Bitcoin (BTC)</p>
         <div class="address-box">
@@ -176,9 +181,7 @@
       
       <p class="payment-instruction">After paying, please email your receipt to <strong>ConcreteFunguiLLC@gmail.com</strong> so we can process your order.</p>
     </div>
-    <!-- END PAYMENT SECTION -->
 
-  </aside>
   </aside>
   <div class="overlay" id="overlay"></div>
 
