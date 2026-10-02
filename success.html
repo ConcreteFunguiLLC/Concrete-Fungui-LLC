@@ -6,74 +6,17 @@
   <title>Order Received — Concrete Fungii</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    .success-container {
-      max-width: 600px;
-      margin: 80px auto;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    .success-icon {
-      font-size: 60px;
-      color: var(--lime);
-      margin-bottom: 20px;
-    }
-    .success-container h1 {
-      font-size: clamp(32px, 5vw, 48px);
-      text-transform: uppercase;
-      letter-spacing: -2px;
-      margin-bottom: 15px;
-    }
-    .success-container p {
-      color: var(--muted);
-      margin-bottom: 30px;
-      font-size: 16px;
-    }
-    .next-steps {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 25px;
-      text-align: left;
-      margin-bottom: 30px;
-    }
-    .step-item {
-      margin-bottom: 25px;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 20px;
-    }
-    .step-item:last-child {
-      margin-bottom: 0;
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-    .step-number {
-      display: inline-block;
-      background: var(--cyan);
-      color: #000;
-      font-weight: 900;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      text-align: center;
-      line-height: 24px;
-      font-size: 12px;
-      margin-right: 10px;
-    }
-    .step-title {
-      font-weight: 800;
-      text-transform: uppercase;
-      font-size: 14px;
-      color: var(--text);
-    }
-    .step-desc {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 8px;
-      margin-left: 34px;
-    }
-    .return-btn {
-      margin-top: 20px;
-    }
+    .success-container { max-width: 600px; margin: 80px auto; padding: 40px 20px; text-align: center; }
+    .success-icon { font-size: 60px; color: var(--lime); margin-bottom: 20px; }
+    .success-container h1 { font-size: clamp(32px, 5vw, 48px); text-transform: uppercase; letter-spacing: -2px; margin-bottom: 15px; }
+    .success-container p { color: var(--muted); margin-bottom: 30px; font-size: 16px; }
+    .next-steps { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 25px; text-align: left; margin-bottom: 30px; }
+    .step-item { margin-bottom: 25px; border-bottom: 1px solid var(--line); padding-bottom: 20px; }
+    .step-item:last-child { margin-bottom: 0; border-bottom: none; padding-bottom: 0; }
+    .step-number { display: inline-block; background: var(--cyan); color: #000; font-weight: 900; width: 24px; height: 24px; border-radius: 50%; text-align: center; line-height: 24px; font-size: 12px; margin-right: 10px; }
+    .step-title { font-weight: 800; text-transform: uppercase; font-size: 14px; color: var(--text); }
+    .step-desc { font-size: 13px; color: var(--muted); margin-top: 8px; margin-left: 34px; }
+    .return-btn { margin-top: 20px; }
   </style>
 </head>
 <body>
@@ -112,6 +55,15 @@
               <button class="copy-btn" onclick="copyToClipboard('0xeB7FA57385C40e702979bC58Cfc26612905C8676')">Copy</button>
             </div>
           </div>
+          
+          <div class="qr-payment-section" style="margin-top: 20px; text-align: center;">
+            <p class="payment-subtitle">Or scan to pay with Zelle</p>
+            <div class="qr-wrapper" style="display: inline-block; background: #fff; padding: 10px; border-radius: 8px;">
+              <img src="assets/ppqr.png" alt="Scan to pay with Zelle" class="payment-qr" style="width: 160px; height: 160px; display: block;">
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class="step-item">
         <span class="step-number">2</span>
@@ -134,7 +86,6 @@
   </main>
 
   <script>
-    // Copy to Clipboard function
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(function() {
         const btn = event.target;
@@ -142,7 +93,6 @@
         btn.innerText = "Copied!";
         btn.style.background = "var(--lime)";
         btn.style.color = "#000";
-        
         setTimeout(() => {
           btn.innerText = originalText;
           btn.style.background = "var(--line)";
@@ -150,7 +100,6 @@
         }, 2000);
       }, function(err) {
         console.error('Could not copy text: ', err);
-        alert("Failed to copy. Please select the address manually.");
       });
     }
   </script>
