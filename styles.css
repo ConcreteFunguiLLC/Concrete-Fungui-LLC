@@ -25,3 +25,77 @@ footer{border-top:1px solid var(--line);padding:60px 5vw;display:grid;grid-templ
 .cart-drawer{position:fixed;right:0;top:0;bottom:0;width:min(430px,100%);background:#0b0b0d;z-index:40;transform:translateX(100%);transition:.3s;padding:25px;border-left:1px solid var(--line);overflow:auto}.cart-drawer.open{transform:translateX(0)}.overlay{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:30;display:none}.overlay.open{display:block}.cart-head{display:flex;justify-content:space-between;align-items:center}.cart-head button{background:none;color:#fff;border:0;font-size:30px;cursor:pointer}.cart-line{display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line)}.cart-total{display:flex;justify-content:space-between;margin:25px 0;font-size:18px}.full{width:100%}
 @media(max-width:850px){.nav{display:none}.nav.open{position:absolute;top:101px;left:0;right:0;display:grid;background:#08080a;padding:25px}.menu-toggle{display:block}.hero,.split-section,.contact-section{grid-template-columns:1fr}.hero{padding-top:50px}.hero-mark{order:-1}.hero-mark img{width:260px}.category-grid,.product-grid,.values{grid-template-columns:1fr 1fr}.split-copy{border-left:0;border-top:1px solid var(--line);padding:70px 7vw}footer{grid-template-columns:1fr}.legal{text-align:left}}
 @media(max-width:520px){.category-grid,.product-grid,.values{grid-template-columns:1fr}.section-head{display:block}.section-head>p{margin-top:20px}.hero h1{letter-spacing:-3px}.hero-actions{flex-direction:column}.btn{text-align:center}}
+/* Neat Checkout Payment Styles */
+.payment-section {
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.payment-title {
+  text-align: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.paypal-container {
+  margin-bottom: 20px;
+}
+
+/* The "OR" Divider */
+.payment-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 25px 0;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.payment-divider::before,
+.payment-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--line);
+}
+
+.payment-divider span {
+  padding: 0 15px;
+}
+
+/* QR Code Section */
+.qr-payment-section {
+  text-align: center;
+}
+
+.payment-subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+
+.qr-wrapper {
+  display: inline-block;
+  background-color: #ffffff; /* Needed for scanning */
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.payment-qr {
+  width: 160px;
+  height: 160px;
+  display: block;
+}
+
+.payment-instruction {
+  font-size: 11px;
+  color: #777;
+  line-height: 1.4;
+  max-width: 280px;
+  margin: 0 auto;
+}
