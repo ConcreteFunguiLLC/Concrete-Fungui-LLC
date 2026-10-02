@@ -136,13 +136,23 @@
     <div class="legal">© 2026 Concrete Fungii. All rights reserved. <br>Demo storefront — replace with your final legal, privacy, shipping, refund, and compliance pages before launch.</div>
   </footer>
 
-    <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+      <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
     <div class="cart-head"><h2>Your cart</h2><button id="closeCart">×</button></div>
     <div id="cartItems"></div>
     <div class="cart-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
     
-        <!-- PAYMENT SECTION -->
-    <div class="payment-section">
+    <!-- CHECKOUT FORM -->
+    <div class="checkout-form-section" id="checkoutFormSection">
+      <h3 class="payment-title">Secure Your Order</h3>
+      <p class="small-note" style="text-align: center; margin-bottom: 15px;">Enter your email to receive payment instructions and your receipt.</p>
+      <form id="orderForm">
+        <input type="email" id="customerEmail" placeholder="Your Email Address" required>
+        <button class="btn btn-primary full" type="submit" id="submitOrderBtn">Confirm & Pay</button>
+      </form>
+    </div>
+
+    <!-- PAYMENT SECTION (Initially Hidden) -->
+    <div class="payment-section" id="paymentSection" style="display: none;">
       <h3 class="payment-title">Pay With Crypto</h3>
       
       <!-- Crypto Addresses -->
@@ -170,6 +180,7 @@
     </div>
     <!-- END PAYMENT SECTION -->
 
+  </aside>
   </aside>
   <div class="overlay" id="overlay"></div>
 
