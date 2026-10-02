@@ -12,6 +12,8 @@ const drawer=document.getElementById("cartDrawer");
 const overlay=document.getElementById("overlay");
 const items=document.getElementById("cartItems");
 const total=document.getElementById("cartTotal");
+const checkoutFormSection = document.getElementById("checkoutFormSection");
+const paymentSection = document.getElementById("paymentSection");
 
 function renderProducts(){
   grid.innerHTML=products.map(p=>`
@@ -33,20 +35,13 @@ function renderCart(){
 }
 function openCart(){drawer.classList.add("open");overlay.classList.add("open");drawer.setAttribute("aria-hidden","false")}
 function closeCart(){drawer.classList.remove("open");overlay.classList.remove("open");drawer.setAttribute("aria-hidden","true")}
+
 document.getElementById("cartBtn").onclick=openCart;
 document.getElementById("closeCart").onclick=closeCart;
 overlay.onclick=closeCart;
 document.querySelector(".menu-toggle").onclick=()=>document.querySelector(".nav").classList.toggle("open");
-document.getElementById("contactForm").addEventListener("submit",e=>{e.preventDefault();document.getElementById("formMessage").textContent="Demo form submitted — connect your email/form service to receive messages.";});
-renderProducts();renderCart();
-function copyToClipboard(text) {
-  navigator.clipboard.writeText(text).then(function() {
-    alert("Address copied to clipboard!");
-  }, function(err) {
-    console.error('Could not copy text: ', err);
-  });
-}
-// Handle Order Form Submission to Web3Forms
+
+// Formspree Submission Handler
 document.getElementById("orderForm").addEventListener("submit", function(e) {
   e.preventDefault();
 
@@ -59,28 +54,23 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
   }
 
   const orderData = {
-    access_key: "8ad53570-4c3c-42ea-8430-23d75c00ec2d", // Replace with your actual key
     email: email,
     total: cartTotal.toFixed(2),
     items: cart.map(item => `${item.name} (x${item.qty})`).join(", "),
-    orderDate: new Date().toLocaleString(),
-    subject: "New Concrete Fungii Order",
-    from_name: "Concrete Fungii"
+    orderDate: new Date().toLocaleString()
   };
 
-  fetch("https://api.web3forms.com/submit", {
+  fetch("https://formspree.io/f/xrpbvnal", {
     method: "POST",
-    headers: {
+    headers: { 
       "Content-Type": "application/json",
       "Accept": "application/json"
     },
     body: JSON.stringify(orderData)
   })
-  .then(response => response.json())
-  .then(data => {
-    if (data.success) {
-      // Redirect to your success page
-      window.location.href = "success.html";
+  .then(response => {
+    if (response.ok) {
+      window.location.href = "success.html"; // Redirect to the success page
     } else {
       alert("Something went wrong. Please try again.");
     }
@@ -90,3 +80,23 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
     alert("Network error. Please try again.");
   });
 });
+
+// Copy to Clipboard
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    const btn = event.target;
+    const originalText = btn.innerText;
+    btn.innerText = "Copied!";
+    btn.style.background = "var(--lime)";
+    btn.style.color = "#000";
+    setTimeout(() => {
+      btn.innerText = originalText;
+      btn.style.background = "var(--line)";
+      btn.style.color = "#fff";
+    }, 2000);
+  }, function(err) {
+    console.error('Could not copy text: ', err);
+  });
+}
+
+renderProducts();renderCart();
