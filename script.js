@@ -59,7 +59,7 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
   }
 
   const orderData = {
-    access_key: "YOUR_WEB3FORMS_ACCESS_KEY", // Replace with your actual key
+    access_key: "8ad53570-4c3c-42ea-8430-23d75c00ec2d", // Replace with your actual key
     email: email,
     total: cartTotal.toFixed(2),
     items: cart.map(item => `${item.name} (x${item.qty})`).join(", "),
