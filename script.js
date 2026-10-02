@@ -36,7 +36,6 @@ function closeCart(){drawer.classList.remove("open");overlay.classList.remove("o
 document.getElementById("cartBtn").onclick=openCart;
 document.getElementById("closeCart").onclick=closeCart;
 overlay.onclick=closeCart;
-document.getElementById("checkoutBtn").onclick=()=>alert("Demo checkout. Connect your ecommerce provider before launch.");
 document.querySelector(".menu-toggle").onclick=()=>document.querySelector(".nav").classList.toggle("open");
 document.getElementById("contactForm").addEventListener("submit",e=>{e.preventDefault();document.getElementById("formMessage").textContent="Demo form submitted — connect your email/form service to receive messages.";});
 renderProducts();renderCart();
