@@ -6,13 +6,19 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.5}
 a{color:inherit;text-decoration:none}.announcement{background:#000;border-bottom:1px solid #1c1c1c;text-align:center;padding:9px;font-size:11px;letter-spacing:3px;color:var(--cyan)}
 
-/* --- HEADER & INSTAGRAM --- */
-.site-header{position:sticky;top:0;z-index:20;background:rgba(5,5,5,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:12px 4vw}
-.header-left {display: flex;align-items: center; gap: 15px;}
-.brand img{width:76px;height:76px;object-fit:contain}
-.instagram-link {display: flex; align-items: center; justify-content: center; color: var(--text); transition: color 0.2s ease;}
-.instagram-link:hover {color: var(--cyan);}
-.instagram-link svg {width: 24px; height: 24px;}
+/* Header Left Section (Logo + Instagram) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* This keeps the logo and Instagram icon neatly spaced */
+}
+
+/* This forces the logo to be small */
+.brand img {
+  width: 60px;   /* You can change this number to make it bigger or smaller */
+  height: 60px;
+  object-fit: contain;
+}
 
 /* --- NAVIGATION --- */
 .nav{display:flex;align-items:center;gap:28px;text-transform:uppercase;font-size:12px;letter-spacing:1.5px}.nav a:hover{color:var(--cyan)}
