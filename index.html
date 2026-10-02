@@ -129,8 +129,32 @@
     <div class="cart-head"><h2>Your cart</h2><button id="closeCart">×</button></div>
     <div id="cartItems"></div>
     <div class="cart-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
-    <button class="btn btn-primary full" id="checkoutBtn">Checkout</button>
-    <p class="small-note">Demo cart only. Connect Shopify, Stripe, or another approved ecommerce backend for live checkout.</p>
+      <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-head"><h2>Your cart</h2><button id="closeCart">×</button></div>
+    <div id="cartItems"></div>
+    <div class="cart-total"><span>Total</span><strong id="cartTotal">$0.00</strong></div>
+    
+    <!-- NEW NEAT PAYMENT SECTION -->
+    <div class="payment-section">
+      <h3 class="payment-title">Choose Payment Method</h3>
+      
+      <!-- PayPal Button Container (Paste your PayPal code inside this div) -->
+      <div id="paypal-button-container" class="paypal-container"></div>
+      
+      <!-- Visual Divider -->
+      <div class="payment-divider"><span>OR</span></div>
+      
+      <!-- QR Code Section -->
+      <div class="qr-payment-section">
+        <p class="payment-subtitle">Scan to pay with Zelle / Crypto (BTC, LTC, XMR)</p>
+        <div class="qr-wrapper">
+          <img src="assets/qr-code.png" alt="Scan to pay with Zelle or Crypto" class="payment-qr">
+        </div>
+        <p class="payment-instruction">After paying, please email your receipt to <strong>your-email@domain.com</strong> so we can process your order.</p>
+      </div>
+    </div>
+    <!-- END NEW NEAT PAYMENT SECTION -->
+
   </aside>
   <div class="overlay" id="overlay"></div>
 
