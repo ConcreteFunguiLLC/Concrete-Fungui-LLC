@@ -39,3 +39,10 @@ overlay.onclick=closeCart;
 document.querySelector(".menu-toggle").onclick=()=>document.querySelector(".nav").classList.toggle("open");
 document.getElementById("contactForm").addEventListener("submit",e=>{e.preventDefault();document.getElementById("formMessage").textContent="Demo form submitted — connect your email/form service to receive messages.";});
 renderProducts();renderCart();
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text).then(function() {
+    alert("Address copied to clipboard!");
+  }, function(err) {
+    console.error('Could not copy text: ', err);
+  });
+}
