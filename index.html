@@ -141,13 +141,36 @@
       
       <!-- QR Code Section -->
       <div class="qr-payment-section">
-        <p class="payment-subtitle">SCAN QR CODE BELOW TO PAY WITH PAYPAL</p>
-        <img src="assets/ppqr.png" ...>
-          <img src="assets/ppqr.png" alt="Scan to pay with Zelle or Crypto" class="payment-qr">
-        </div>
-        <p class="payment-instruction">After paying, please email your receipt to <strong>ConcreteFunguiLLC@gmail.com</strong> so we can process your order.</p>
-      </div>
+  <p class="payment-subtitle">Pay with Crypto or Zelle</p>
+  
+  <!-- Zelle QR Code (Keep this if they still want it) -->
+  <div class="qr-wrapper">
+    <img src="assets/ppqr.png" alt="Scan to pay with Zelle" class="payment-qr">
+  </div>
+  
+  <!-- Crypto Addresses -->
+  <div class="crypto-addresses">
+    <p class="crypto-label">Bitcoin (BTC)</p>
+    <div class="address-box">
+      <code>3HSVQqHzkTV2SXnzipQm1EjvN8aKMvkYP4</code>
+      <button class="copy-btn" onclick="copyToClipboard('3HSVQqHzkTV2SXnzipQm1EjvN8aKMvkYP4')">Copy</button>
     </div>
+    
+    <p class="crypto-label">Monero (XMR)</p>
+    <div class="address-box">
+      <code>86dCVcNpyUDNjh9joe6smGfLH9v5LqxgHK5VdLZf5Nzf6kFen12KHEfiQteNQHodk7TXZPBq3k6SyMj7QhGysXgrVJ3fzJR</code>
+      <button class="copy-btn" onclick="copyToClipboard('86dCVcNpyUDNjh9joe6smGfLH9v5LqxgHK5VdLZf5Nzf6kFen12KHEfiQteNQHodk7TXZPBq3k6SyMj7QhGysXgrVJ3fzJR')">Copy</button>
+    </div>
+
+    <p class="crypto-label">Ethereum (ETH)</p>
+    <div class="address-box">
+      <code>0xeB7FA57385C40e702979bC58Cfc26612905C8676</code>
+      <button class="copy-btn" onclick="copyToClipboard('0xeB7FA57385C40e702979bC58Cfc26612905C8676')">Copy</button>
+    </div>
+  </div>
+  
+  <p class="payment-instruction">After paying, please email your receipt to <strong>your-email@domain.com</strong> so we can process your order.</p>
+</div>
     <!-- END NEW NEAT PAYMENT SECTION -->
 
   </aside>
