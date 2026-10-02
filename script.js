@@ -46,3 +46,50 @@ function copyToClipboard(text) {
     console.error('Could not copy text: ', err);
   });
 }
+// Handle Order Form Submission to Formspree
+document.getElementById("orderForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // Stop the page from reloading
+
+  const email = document.getElementById("customerEmail").value;
+  const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+  // Prevent checkout if cart is empty
+  if (cartTotal === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  // Prepare the order data for Formspree
+  const orderData = {
+    email: email,
+    total: cartTotal.toFixed(2),
+    items: cart.map(item => `${item.name} (x${item.qty})`).join(", "),
+    orderDate: new Date().toLocaleString()
+  };
+
+  // Send data to Formspree
+  fetch("https://formspree.io/f/xrpbvnal", {
+    method: "POST",
+    headers: { 
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(orderData)
+  })
+  .then(response => {
+    if (response.ok) {
+      // 1. Hide the email form
+      document.getElementById("checkoutFormSection").style.display = "none";
+      // 2. Show the crypto payment addresses
+      document.getElementById("paymentSection").style.display = "block";
+      // 3. Notify the user
+      alert("Order details saved! Please complete the payment below.");
+    } else {
+      alert("Something went wrong. Please try again.");
+    }
+  })
+  .catch(error => {
+    console.error("Error:", error);
+    alert("Network error. Please try again.");
+  });
+});
